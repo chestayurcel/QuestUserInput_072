@@ -3,7 +3,10 @@ package com.example.userinput
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,7 +44,20 @@ fun FormDataDiri(modifier: Modifier)
             }
         )
         Row {
-            gender.forEach { item -> }
+            gender.forEach { item ->
+                Row(
+                    modifier = Modifier.selectable(
+                    selected = textJK == item,
+                    onClick = { textJK = item }
+                ), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(
+                        selected = textJK == item,
+                        onClick = {
+                            textJK = item
+                        })
+                    Text(item)
+                }
+            }
         }
     }
 }
